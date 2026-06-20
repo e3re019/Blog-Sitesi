@@ -1,0 +1,285 @@
+body {
+    margin: 0;
+    font-family: Arial;
+    background: black;
+    color: white;
+    overflow-x: hidden;
+}
+
+/* 🌌 STAR BACKGROUND */
+.stars {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: url("https://www.transparenttextures.com/patterns/stardust.png");
+    z-index: -1;
+}
+
+/* 🧭 NAVBAR */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+
+    padding: 14px 30px;
+
+    background: rgba(15, 15, 15, 0.75);
+    backdrop-filter: blur(15px);
+
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.6);
+
+    z-index: 1000;
+}
+
+.nav-left {
+    flex: 1;
+}
+
+.logo {
+    color: #00f0ff;
+    font-weight: bold;
+    font-size: 32px;
+}
+
+.nav-center {
+    flex: 2;
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+}
+
+.nav-center a {
+    color: white;
+    text-decoration: none;
+    padding: 8px 14px;
+    border-radius: 10px;
+    transition: 0.25s;
+}
+
+.nav-center a:hover {
+    background: rgba(0, 240, 255, 0.15);
+    color: #00f0ff;
+}
+
+.nav-right {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 60px;
+}
+
+.nav-right button {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.2);
+    color: white;
+    padding: 7px 12px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.nav-right button:hover {
+    border-color: #00f0ff;
+    color: #00f0ff;
+}
+
+/* 🏠 HERO */
+.center {
+    text-align: center;
+    margin-top: 180px;
+}
+
+.center h1 {
+    font-size: 55px;
+    color: #00f0ff;
+    margin-bottom: 10px;
+    text-shadow: 0 0 20px rgba(0,240,255,0.4);
+}
+
+.center p {
+    opacity: 0.7;
+    font-size: 18px;
+}
+
+/* 📌 INFO TITLE */
+.info-title {
+    text-align: center;
+    font-size: 30px;
+    margin-top: 100px;
+    margin-bottom: 40px;
+    color: #00f0ff;
+    text-shadow: 0 0 10px rgba(0,240,255,0.4);
+}
+
+/* 📦 CARDS */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    margin-top: 80px;
+}
+
+.card {
+    width: 60%;
+    background: rgba(255,255,255,0.05);
+    padding: 20px;
+
+    border-radius: 15px;
+    border: 1px solid rgba(255,255,255,0.1);
+
+    backdrop-filter: blur(10px);
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: scale(1.03);
+    border-color: #00f0ff;
+    box-shadow: 0 0 20px rgba(0,240,255,0.2);
+}
+
+/* ✨ VALUE TEXT */
+.value {
+    color: #00f0ff;
+    font-weight: bold;
+    text-shadow: 0 0 8px rgba(0,240,255,0.6);
+}
+
+/* 💸 DONATE BUTTON */
+.donate-btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 14px 28px;
+
+    background: rgba(0,240,255,0.15);
+    border: 1px solid #00f0ff;
+
+    color: #00f0ff;
+    text-decoration: none;
+
+    border-radius: 12px;
+    transition: 0.3s;
+}
+
+.donate-btn:hover {
+    background: #00f0ff;
+    color: black;
+    box-shadow: 0 0 20px #00f0ff;
+}
+
+/* 🧾 FOOTER */
+footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 60px;
+
+    background: rgba(15, 15, 15, 0.8);
+    border-top: 1px solid rgba(255,255,255,0.1);
+
+    opacity: 0.8;
+}
+
+/* HIDDEN */
+.hidden {
+    display: none;
+}
+
+.modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); }
+.modal-content { background: #1e1e1e; margin: 10% auto; padding: 30px; border: 1px solid #333; width: 300px; text-align: center; border-radius: 8px; color: #fff; }
+.close-btn { float: right; cursor: pointer; font-size: 24px; }
+.modal-content input { width: 100%; padding: 10px; margin: 10px 0; background: #222; border: 1px solid #444; color: #fff; border-radius: 4px; box-sizing: border-box; }
+.modal-content .btn { width: 100%; padding: 10px; background: #00adb5; border: none; color: #fff; cursor: pointer; border-radius: 4px; }
+
+.modal{
+    display:none;
+    position:fixed;
+    z-index:9999;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,.8);
+    justify-content:center;
+    align-items:center;
+}
+
+.modal-content{
+    width:400px;
+    background:#111;
+    border:2px solid #00adb5;
+    border-radius:15px;
+    padding:30px;
+    text-align:center;
+    box-shadow:
+        0 0 10px #00adb5,
+        0 0 20px #00adb5,
+        0 0 40px #00adb5;
+    animation:popup .3s ease;
+}
+
+@keyframes popup{
+    from{
+        transform:scale(.8);
+        opacity:0;
+    }
+    to{
+        transform:scale(1);
+        opacity:1;
+    }
+}
+
+.modal-content h2{
+    color:#00adb5;
+    margin-bottom:20px;
+}
+
+.modal-content input{
+    width:100%;
+    padding:12px;
+    margin:8px 0;
+    border:none;
+    border-radius:8px;
+    background:#222;
+    color:white;
+    box-sizing:border-box;
+}
+
+.auth-submit-btn{
+    width:100%;
+    padding:12px;
+    margin-top:10px;
+    border:none;
+    border-radius:8px;
+    background:#00adb5;
+    color:white;
+    cursor:pointer;
+    font-weight:bold;
+    transition:.3s;
+}
+
+.auth-submit-btn:hover{
+    background:#00d4df;
+    box-shadow:0 0 15px #00adb5;
+}
+
+.auth-toggle-text{
+    margin-top:15px;
+    color:white;
+}
+
+.auth-toggle-text span{
+    color:#00adb5;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.close-btn{
+    float:right;
+    color:white;
+    font-size:25px;
+    cursor:pointer;
+}

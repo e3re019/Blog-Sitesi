@@ -1,0 +1,6 @@
+app.delete('/api/delete-all-notes', (req, res) => {
+    db.run(`DELETE FROM notes`, [], (err) => {
+        if (err) return res.status(500).json({ message: "Notlar silinirken hata oluştu!" });
+        res.json({ message: "Tüm notlar başarıyla silindi!" });
+    });
+});
