@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kayıt Ol - e3re_0</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="stars"></div>
+
+<header class="navbar">
+    <div class="nav-left"><span class="logo">e3re_0</span></div>
+    <div class="nav-center">
+        <a href="index.html">Ana Sayfa</a>
+        <a href="donate.html">Bağış</a>
+    </div>
+    <div class="nav-right">
+        <a href="login.html" style="color: #fff; text-decoration: none; font-weight: bold;">Giriş Yap</a>
+    </div>
+</header>
+
+<section class="center" style="min-height: calc(100vh - 140px); display: flex; justify-content: center; align-items: center;">
+    <div class="card" style="width: 100%; max-width: 400px; text-align: center;">
+        <h2>Kayıt Ol</h2>
+        <form id="registerForm" style="display: flex; flex-direction: column; gap: 12px; margin-top: 15px;">
+            <input type="email" id="regEmail" placeholder="E-posta Adresi" required style="padding: 10px; background: #222; color: #fff; border: 1px solid #444; border-radius: 4px;">
+            <input type="text" id="regUser" placeholder="Kullanıcı Adı" required style="padding: 10px; background: #222; color: #fff; border: 1px solid #444; border-radius: 4px;">
+            <input type="password" id="regPass" placeholder="Şifre" required style="padding: 10px; background: #222; color: #fff; border: 1px solid #444; border-radius: 4px;">
+            <input type="password" id="regPassConfirm" placeholder="Şifre Onay" required style="padding: 10px; background: #222; color: #fff; border: 1px solid #444; border-radius: 4px;">
+            <button type="submit" style="padding: 10px; background: #00adb5; color: #fff; border: none; border-radius: 4px; font-weight: bold; cursor: pointer;">Kayıt Ol</button>
+        </form>
+        <p style="margin-top: 15px; font-size: 14px; color: #aaa;">Zaten hesabın var mı? <a href="login.html" style="color: #00adb5; text-decoration: none; font-weight: bold;">Giriş Yap</a></p>
+        <p id="msg" style="margin-top: 15px; font-size: 14px; display: none; font-weight: bold;"></p>
+    </div>
+</section>
+
+<footer>© 2026 Tüm Hakları Saklıdır</footer>
+
+<script>
+document.getElementById("registerForm").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const email = document.getElementById("regEmail").value.trim();
+    const username = document.getElementById("regUser").value.trim();
+    const password = document.getElementById("regPass").value.trim();
+    const confirm = document.getElementById("regPassConfirm").value.trim();
+    const msg = document.getElementById("msg");
+
+    if (password !== confirm) {
+        msg.style.display = "block";
+        msg.style.color = "#ff4a4a";
+        msg.textContent = "Şifreler uyuşmuyor.";
+        return;
+    }
+
+    try {
+        const response = await fetch("/api/register", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ username, email, password })
+        });
+        const data = await response.json();
+        msg.style.display = "block";
+        if (response.ok) {
+            msg.style.color = "#00ff88";
+            msg.textContent = "Kayıt başarılı! Giriş sayfasına yönlendiriliyorsunuz...";
+            setTimeout(() => { window.location.href = "login.html"; }, 1500);
+        } else {
+            msg.style.color = "#ff4a4a";
+            msg.textContent = data.message;
+        }
+    } catch {
+        msg.style.display = "block";
+        msg.style.color = "#ff4a4a";
+        msg.textContent = "Sunucu bağlantı hatası.";
+    }
+});
+</script>
+</body>
+</html>

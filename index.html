@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>e3re_0 Web Sitesi</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="stars"></div>
+
+<header class="navbar">
+    <div class="nav-left">
+        <span class="logo">e3re_0</span>
+    </div>
+
+    <div class="nav-center">
+        <a href="index.html">Ana Sayfa</a>
+        <a href="donate.html">Bağış</a>
+    </div>
+
+    <div class="nav-right">
+        <button id="loginBtn">Giriş Yap</button>
+        
+        <div id="userMenu" style="display: none; align-items: center; gap: 15px;">
+            <span id="usernameText" style="color: #00adb5; font-weight: bold;"></span>
+            <button id="logoutBtn" style="background: #ff4a4a; color: white; border: none; padding: 5px 12px; border-radius: 5px; cursor: pointer; font-weight: bold;">Çıkış Yap</button>
+        </div>
+    </div>
+</header>
+
+<section class="center">
+    <h1>e3re_0 Web Sitesi</h1>
+    <p>Yazılım • Web • Projeler</p>
+</section>
+
+<div class="info-title">Bilgilerim</div>
+
+<section class="container">
+    <div class="card">
+        <h2>Adım</h2>
+        <p><span class="value">-</span></p>
+    </div>
+
+    <div class="card">
+        <h2>Yaşım</h2>
+        <p><span class="value">-</span></p>
+    </div>
+
+    <div class="card">
+        <h2>Şehir</h2>
+        <p><span class="value">-</span></p>
+    </div>
+
+    <div class="card">
+        <h2>Yaptığım Çalışmalar</h2>
+        <p><span class="value">-</span></p>
+    </div>
+
+    <div class="card">
+        <h2>Şuanki Çalışmalarım</h2>
+        <p><span class="value">-</span></p>
+    </div>
+
+    <div class="card">
+        <h2>Gelecekteki Çalışmalarım</h2>
+        <p><span class="value">-</span></p>
+    </div>
+</section>
+
+<div class="info-title">Ziyaretçi Notları</div>
+<section class="container" style="justify-content: center; margin-bottom: 20px;">
+    <div class="card" style="width: 100%; max-width: 500px; text-align: left;">
+        <h2 style="text-align: center;">Bir Not Bırak</h2>
+        <form id="noteForm" style="display: flex; flex-direction: column; gap: 15px; margin-top: 15px;">
+            <div style="display: flex; flex-direction: column; gap: 5px;">
+                <label for="username" style="color: #fff; font-size: 14px;">Kullanıcı Adınız:</label>
+                <input type="text" id="username" required placeholder="Adınız veya Rumuzunuz" style="padding: 10px; border-radius: 5px; border: 1px solid #444; background: #222; color: #fff;">
+            </div>
+            
+            <div style="display: flex; flex-direction: column; gap: 5px;">
+                <label for="userNote" style="color: #fff; font-size: 14px;">Notunuz:</label>
+                <textarea id="userNote" required rows="4" placeholder="Eklemek istediğiniz notu yazın..." style="padding: 10px; border-radius: 5px; border: 1px solid #444; background: #222; color: #fff; resize: none;"></textarea>
+            </div>
+            
+            <button type="submit" style="padding: 12px; border: none; border-radius: 5px; background: #00adb5; color: #fff; font-weight: bold; cursor: pointer; transition: 0.3s;">Notu Gönder</button>
+        </form>
+        <div id="formResponse" style="margin-top: 10px; text-align: center; font-size: 14px; display: none;"></div>
+    </div>
+</section>
+
+<section class="container" style="justify-content: center; margin-bottom: 50px;">
+    <div id="notesContainer" style="width: 100%; max-width: 500px; display: flex; flex-direction: column; gap: 15px;">
+        </div>
+</section>
+
+<div id="authModal" class="modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 1000; justify-content: center; align-items: center;">
+    <div class="modal-content" style="background: #1e1e1e; padding: 30px; border-radius: 8px; position: relative; width: 90%; max-width: 400px; text-align: center; border: 1px solid #333;">
+        <span class="close-btn" style="position: absolute; right: 15px; top: 10px; font-size: 24px; cursor: pointer; color: #aaa;">&times;</span>
+        
+        <div id="loginSection">
+            <h2>Giriş Yap</h2>
+            <form id="loginForm">
+                <input type="text" id="loginUser" placeholder="Kullanıcı Adı" required style="width: 100%; padding: 10px; margin: 10px 0; background: #222; color: #fff; border: 1px solid #444; border-radius: 4px; box-sizing: border-box;">
+                <input type="password" id="loginPass" placeholder="Şifre" required style="width: 100%; padding: 10px; margin: 10px 0; background: #222; color: #fff; border: 1px solid #444; border-radius: 4px; box-sizing: border-box;">
+                <button type="submit" class="auth-submit-btn" style="width: 100%; padding: 10px; background: #00adb5; color: #fff; border: none; border-radius: 4px; font-weight: bold; cursor: pointer;">Giriş Yap</button>
+            </form>
+            <p class="auth-toggle-text" style="margin-top: 15px; font-size: 14px; color: #aaa;">Hesabın yok mu? <span id="toRegisterBtn" style="color: #00adb5; cursor: pointer; font-weight: bold;">Kayıt Ol</span></p>
+        </div>
+
+        <div id="registerSection" style="display: none;">
+            <h2>Kayıt Ol</h2>
+            <form id="registerForm">
+                <input type="email" id="regEmail" placeholder="E-posta Adresi" required style="width: 100%; padding: 10px; margin: 10px 0; background: #222; color: #fff; border: 1px solid #444; border-radius: 4px; box-sizing: border-box;">
+                <input type="text" id="regUser" placeholder="Kullanıcı Adı" required style="width: 100%; padding: 10px; margin: 10px 0; background: #222; color: #fff; border: 1px solid #444; border-radius: 4px; box-sizing: border-box;">
+                <input type="password" id="regPass" placeholder="Şifre" required style="width: 100%; padding: 10px; margin: 10px 0; background: #222; color: #fff; border: 1px solid #444; border-radius: 4px; box-sizing: border-box;">
+                <input type="password" id="regPassConfirm" placeholder="Şifre Onay" required style="width: 100%; padding: 10px; margin: 10px 0; background: #222; color: #fff; border: 1px solid #444; border-radius: 4px; box-sizing: border-box;">
+                <button type="submit" class="auth-submit-btn" style="width: 100%; padding: 10px; background: #00adb5; color: #fff; border: none; border-radius: 4px; font-weight: bold; cursor: pointer;">Kayıt Ol</button>
+            </form>
+            <p class="auth-toggle-text" style="margin-top: 15px; font-size: 14px; color: #aaa;">Zaten hesabın var mı? <span id="toLoginBtn" style="color: #00adb5; cursor: pointer; font-weight: bold;">Giriş Yap</span></p>
+        </div>
+        
+        <p id="modalMsg" style="margin-top: 15px; font-size: 14px; display: none; font-weight: bold;"></p>
+    </div>
+</div>
+
+<footer>
+    © 2026 Tüm Hakları Saklıdır
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
